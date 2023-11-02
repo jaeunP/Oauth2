@@ -22,7 +22,6 @@ repositories {
 }
 
 dependencies {
-	//JWT를 발급할때 xml과
 	implementation 'javax.xml.bind:jaxb-api'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	implementation 'org.springframework.boot:spring-boot-starter-security'

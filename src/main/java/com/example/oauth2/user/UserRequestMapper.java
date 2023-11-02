@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserRequestMapper {
-    public UserDto toDto(OAuth2User oAuth2User) {
+    public MemberDto toDto(OAuth2User oAuth2User) {
         var attributes = oAuth2User.getAttributes();
-        return UserDto.builder()
+        return MemberDto.builder()
                 .email((String)attributes.get("email"))
                 .name((String)attributes.get("name"))
                 .picture((String)attributes.get("picture"))

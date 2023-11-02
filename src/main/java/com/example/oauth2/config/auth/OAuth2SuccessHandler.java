@@ -2,7 +2,7 @@ package com.example.oauth2.config.auth;
 
 import com.example.oauth2.service.Token;
 import com.example.oauth2.service.TokenService;
-import com.example.oauth2.user.UserDto;
+import com.example.oauth2.user.MemberDto;
 import com.example.oauth2.user.UserRequestMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -29,11 +29,11 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
         OAuth2User oAuth2User = (OAuth2User)authentication.getPrincipal();
-        UserDto userDto = userRequestMapper.toDto(oAuth2User);
+        MemberDto memberDto = userRequestMapper.toDto(oAuth2User);
 
         // 최초 로그인이라면 회원가입 처리를 한다.
 
-        Token token = tokenService.generateToken(userDto.getEmail(), "USER");
+        Token token = tokenService.generateToken(memberDto.getEmail(), "USER");
         log.info("{}", token);
 
         writeTokenResponse(response, token);
